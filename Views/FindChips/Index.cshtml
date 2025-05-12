@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Download FindChips Offers";
+    var defaultPartNumber = "2N222";
+}
+
+<div class="container mt-5 text-center">
+    <h1 class="text-primary mb-4">FindChips Offer Downloader</h1>
+
+    <p class="lead">
+        Get the latest pricing offers for part number <strong>@defaultPartNumber</strong> from
+        <a href="https://www.findchips.com/search/@defaultPartNumber" target="_blank">FindChips</a>.
+    </p>
+
+    <p class="mb-4">Click the link below to download the offers as an Excel file:</p>
+
+    <a href="@Url.Action("DownloadExcel", "FindChips", new { partNumber = defaultPartNumber })"
+       class="btn btn-success btn-lg">
+        <i class="bi bi-download"></i> Download as Excel
+    </a>
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger mt-4">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+</div>
